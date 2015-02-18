@@ -1,0 +1,187 @@
+  // import android.util.DisplayMetrics; 
+   
+ Rings[] rings;
+ float colorcount = 1.0;
+ float colorcountNeg = 255;
+ float myColor1 = 250;
+ float myColor2 = 3;
+ float myColor3 = 250;
+ float angle1 = 0;
+ float angle2 = 0;
+ float angle3 = 0;
+ float timer1 = 0;
+void setup(){
+  
+    size(1600, 1200);
+  orientation(LANDSCAPE);
+ // size(1200,800);
+//  DisplayMetrics dm = new DisplayMetrics();
+ // getWindowManager().getDefaultDisplay().getMetrics(dm);
+    smooth();
+  
+    
+
+  rings =new Rings[100];
+  for (int i = 0; i <rings.length; i++){
+    rings[i] = new Rings (random(0,1600), random(0,1200));
+  }
+}
+void draw(){
+  
+
+  //background(color(65,120,205));
+  background(color(myColor2));
+  myColor2 = abs(255*sin(radians(angle2)));
+  angle2+=1;
+  
+  /*if(myColor2 == 2){
+    myColor2 = +3;
+  }*/
+  
+  //colorcount = colorcount + .3;
+  timer1 = timer1 + 1; // clicker for timer
+
+    
+ 
+  
+    
+   for(int i = 0; i<rings.length;i++){
+    rings[i].ringdisplay();
+    rings[i].ringmove();
+   }
+ 
+ 
+ 
+}
+
+class Rings{
+  float ringx, ringy;
+  float ringGrow1 = 0;
+  float ringGrow2 = 0;
+  float ringGrow3 = 0;
+  float ringGrow4 = 0;
+  float ringGrow5 = 0; //Delaed black rings
+ 
+ 
+ 
+  Rings(float ring_x, float ring_y){
+    ringx=ring_x;
+    ringy=ring_y;
+  }
+ 
+  void ringdisplay(){
+    noFill();
+    
+  ellipse (ringx,ringy,ringGrow1,ringGrow1);
+  myColor1 = abs(240*sin(radians(angle1)));
+  stroke(color(myColor1));
+   strokeWeight(1);
+    angle1+=2;
+  
+  ellipse (ringx,ringy,ringGrow2,ringGrow2);
+  //stroke(color(colorcount + 20));
+  myColor3 = abs(240*cos(radians(angle3)));
+  stroke(color(myColor1));
+   strokeWeight(1);
+   angle3+=2;
+   
+  ellipse (ringx,ringy,ringGrow3,ringGrow3);
+  stroke(random(255),random(255),random(255));
+   strokeWeight(1);
+  
+   
+  ellipse (ringx,ringy,ringGrow4,ringGrow4);
+  stroke(color(colorcount + 20));
+   strokeWeight(1);
+   
+   //negitive rings
+   
+ /* ellipse (ringx,ringy,ringGrow1,ringGrow1);
+  stroke(0);
+   strokeWeight(1);
+   
+  ellipse (ringx,ringy,ringGrow2,ringGrow2);
+  stroke(color(colorcountNeg - 20));
+   strokeWeight(1);
+   
+  ellipse (ringx,ringy,ringGrow3,ringGrow3);
+  stroke(color(colorcountNeg - 20));
+   strokeWeight(1);
+   
+ ellipse (ringx,ringy,ringGrow4,ringGrow4);
+  stroke(color(colorcountNeg - 20));
+   strokeWeight(1); 
+  */ 
+   
+    
+}
+void ringmove(){
+    if (timer1 > 575){
+  angle2+= 5;
+    ringGrow1 -= random(6, 16);
+    ringGrow2 -= random(6.4, 16.4);
+    ringGrow3 -= random(6.8, 16.8);
+    ringGrow4 -= random(7.2, 17.2);
+ }
+ 
+ 
+ if (timer1 > 60){
+   
+   ringGrow1 += random(1.5, 4);
+ }
+   if (ringGrow1 > 300){
+
+  ringGrow2 += random(1.6, 4.1);
+  }
+    if (ringGrow1 < 0.0){
+        ringGrow1 = 0;
+     myColor2 = 255; 
+      }
+   
+    if (ringGrow2 > 300){
+  ringGrow3 += random(1.7, 4.2);
+
+
+  }
+   if (ringGrow2 < 0.0){
+        ringGrow2 = 0;
+   
+      }
+   
+   if (ringGrow3 > 300){
+    ringGrow4 += random(1.8, 4.3);
+    }
+    
+     if (ringGrow3 < 0.0){
+        ringGrow3 = 0;
+      }
+       if (ringGrow4 < 0.0){
+        ringGrow4 = 0;
+      }
+    
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+ 
+  
+   println(timer1); 
+  println(myColor3); 
+ }
+ 
+ 
+
+ /* if (ringGrow4 > 1600){
+    ringGrow1 = 0;
+    ringGrow2 = 0;
+    ringGrow3 = 0;
+    ringGrow4 = 0;
+  
+  ringx = ringx += (random(-200,100));
+  ringy = ringy += (random(-100,200));
+  }
+  */
+
+}
+
+    
+
