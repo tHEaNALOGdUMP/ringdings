@@ -1,0 +1,347 @@
+  float ringx, ringy;
+  float ringx2, ringy2;
+  float ringGrow1 = 3; //ring group 1
+  float ringGrow2 = 3;
+  float ringGrow3 = 3;
+  float ringGrow4 = 3;
+  float ringGrow5 = 3; // ring group 2
+  float ringGrow6 = 3;
+  float ringGrow7 = 3;
+  float ringGrow8 = 3;
+  float ringGrow9 = 3;//ring group 3
+  float ringGrow10 = 3;
+  float ringGrow11 = 3;
+  float ringGrow12 = 3;
+  float ringGrow13 = 3;//ring group 4
+  float ringGrow14 = 3;
+  float ringGrow15 = 3;
+  float ringGrow16 = 3;
+  float ringGrow17 = 3;//ring group 5
+  float ringGrow18 = 3;
+  float ringGrow19 = 3;
+  float ringGrow20 = 3;
+  float ringXmove; // ring group 1
+  float ringYmove;
+  float ringXmove2;// ring group 2
+  float ringYmove2;
+  float ringXmove3; // ring group 3
+  float ringYmove3;
+  float ringXmove4; // ring group 4
+  float ringYmove4;
+  float ringXmove5; // ring group 5
+  float ringYmove5;
+  float ring;
+  int ringTap1 = 0;
+  
+ Rings[] rings; //creates arrey
+ Rings[] rings2;
+ Rings[] rings3;
+ Rings[] rings4;
+ Rings[] rings5;
+ 
+void setup(){
+    size(displayWidth, displayHeight);
+    orientation(LANDSCAPE);
+    smooth();
+  }
+void draw(){
+ 
+  background(color(65,120,205));
+    rings =new Rings[1];
+    rings2 =new Rings[1];
+    rings3 =new Rings[1];
+    rings4 =new Rings[1];
+    rings5 =new Rings[1];
+    
+ for (int i = 0; i <rings.length; i++){
+  rings[i] = new Rings (random(0,800), random(0,600));
+ }
+  for (int i = 0; i <rings2.length; i++){
+  rings2[i] = new Rings (random(0,800), random(0,600));
+ }
+  for (int i = 0; i <rings3.length; i++){
+  rings3[i] = new Rings (random(0,800), random(0,600));
+ } 
+ for (int i = 0; i <rings4.length; i++){
+  rings4[i] = new Rings (random(0,800), random(0,600));
+ }
+ for (int i = 0; i <rings5.length; i++){
+  rings5[i] = new Rings (random(0,800), random(0,600));
+ }
+ 
+if (mousePressed == true  && ringTap1 == 0 && ringGrow1 < 5){
+    ringXmove = mouseX;
+    ringYmove = mouseY;
+ 
+ }
+ 
+ if (mousePressed == true && ringTap1 == 0 || ringGrow1 > 6){
+  for(int i = 0; i<rings.length;i++){
+    rings[i].ringdisplay();
+    rings[i].ringmove();
+   
+   }
+}
+if (ringGrow1 > 40){
+  ringTap1 = 1;
+}
+ if (mousePressed == true && ringTap1 == 1 && ringGrow5 < 5){
+    ringXmove2 = mouseX;
+    ringYmove2 = mouseY;
+   
+ }
+ if (mousePressed == true  && ringTap1 == 1 || ringGrow5 > 6){
+   for(int i = 0; i<rings2.length;i++){
+    rings[i].ringdisplay2();
+    rings[i].ringmove2();
+  // ringTap1 = 2;
+   }
+}
+if (ringGrow5 > 40){
+  ringTap1 = 2;
+}
+ if (mousePressed == true && ringTap1 == 2 && ringGrow9 < 5){
+    ringXmove3 = mouseX;
+    ringYmove3 = mouseY;
+   
+ }
+ if (mousePressed == true  && ringTap1 == 2 || ringGrow9 > 6){
+   for(int i = 0; i<rings3.length;i++){
+    rings[i].ringdisplay3();
+    rings[i].ringmove3();
+  // ringTap1 = 2;
+   }
+}
+if (ringGrow9 > 40){
+  ringTap1 = 3;
+}
+if (mousePressed == true && ringTap1 == 3 && ringGrow13 < 5){
+    ringXmove4 = mouseX;
+    ringYmove4 = mouseY;
+   
+ }
+ if (mousePressed == true  && ringTap1 == 3 || ringGrow13 > 6){
+   for(int i = 0; i<rings4.length;i++){
+    rings[i].ringdisplay4();
+    rings[i].ringmove4();
+  // ringTap1 = 2;
+   }
+}
+if (ringGrow13 > 40){
+  ringTap1 = 4;
+}
+if (mousePressed == true && ringTap1 == 4 && ringGrow17 < 5){
+    ringXmove5 = mouseX;
+    ringYmove5 = mouseY;
+   
+ }
+ if (mousePressed == true  && ringTap1 == 4 || ringGrow17 > 6){
+   for(int i = 0; i<rings5.length;i++){
+    rings[i].ringdisplay5();
+    rings[i].ringmove5();
+  // ringTap1 = 2;
+   }
+}
+if (ringGrow17> 40){
+  ringTap1 = 0;
+}
+}
+
+class Rings{
+
+  Rings(float ring_x, float ring_y){
+  //  ringx=ring_x;
+  //  ringy=ring_y;
+  }
+ 
+  void ringdisplay(){
+    
+  noFill();
+  stroke(color(255,100));
+strokeWeight(2);
+  ellipse (ringXmove,ringYmove,ringGrow1,ringGrow1);
+  ellipse (ringXmove,ringYmove,ringGrow2,ringGrow2);
+  ellipse (ringXmove,ringYmove,ringGrow3,ringGrow3);
+  ellipse (ringXmove,ringYmove,ringGrow4,ringGrow4);
+}
+
+void ringdisplay2(){
+     
+  noFill();
+  ellipse (ringXmove2,ringYmove2,ringGrow5,ringGrow5);
+  ellipse (ringXmove2,ringYmove2,ringGrow6,ringGrow6);
+  ellipse (ringXmove2,ringYmove2,ringGrow7,ringGrow7);
+  ellipse (ringXmove2,ringYmove2,ringGrow8,ringGrow8);
+}
+void ringdisplay3(){
+    
+  noFill();
+  ellipse (ringXmove3,ringYmove3,ringGrow9,ringGrow9);
+  ellipse (ringXmove3,ringYmove3,ringGrow10,ringGrow10);
+  ellipse (ringXmove3,ringYmove3,ringGrow11,ringGrow11);
+  ellipse (ringXmove3,ringYmove3,ringGrow12,ringGrow12);
+}
+void ringdisplay4(){
+    
+  noFill();
+  ellipse (ringXmove4,ringYmove4,ringGrow13,ringGrow13);
+  ellipse (ringXmove4,ringYmove4,ringGrow14,ringGrow14);
+  ellipse (ringXmove4,ringYmove4,ringGrow15,ringGrow15);
+  ellipse (ringXmove4,ringYmove4,ringGrow16,ringGrow16);
+}
+void ringdisplay5(){
+    
+  noFill();
+  ellipse (ringXmove5,ringYmove5,ringGrow17,ringGrow17);
+  ellipse (ringXmove5,ringYmove5,ringGrow18,ringGrow18);
+  ellipse (ringXmove5,ringYmove5,ringGrow19,ringGrow19);
+  ellipse (ringXmove5,ringYmove5,ringGrow20,ringGrow20);
+}
+void ringmove(){
+  
+   ringGrow1 += random(3,8);
+ 
+   if (ringGrow1 > 25){
+     
+  ringGrow2 += random(3.2, 8.2);
+  }
+  if (ringGrow2 > 28){
+    ringGrow3 += random(3.4, 8.4);
+
+  }
+   if (ringGrow3 > 31){
+    ringGrow4 += random(3.6, 8.6);
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+  }
+ 
+  if (ringGrow4 > displayWidth/2){
+    ringGrow1 = 0;
+    ringGrow2 = 0;
+    ringGrow3 = 0;
+    ringGrow4 = 0;
+  
+   // ringx = ringx += (random(-100,100));
+   // ringy = ringy += (random(-100,100));
+  }
+}
+void ringmove2(){
+  
+   ringGrow5 += random(3,8);
+ 
+   if (ringGrow5 > 25){
+
+  ringGrow6 += random(3.2, 8.2); 
+  }
+  if (ringGrow6 > 28){
+    ringGrow7 += random(3.4, 8.4);
+
+  }
+   if (ringGrow7 > 31){
+    ringGrow8 += random(3.6, 8.6);
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+  }
+ 
+  if (ringGrow8 > displayWidth/3){
+    ringGrow5 = 0;
+    ringGrow6 = 0;
+    ringGrow7 = 0;
+    ringGrow8 = 0;
+  
+   // ringx = ringx += (random(-100,100));
+   // ringy = ringy += (random(-100,100));
+  }
+}
+
+
+void ringmove3(){
+  
+   ringGrow9 += random(3,8);
+ 
+   if (ringGrow9 > 25){
+
+  ringGrow10 += random(3.2, 8.2);
+  }
+  if (ringGrow10 > 28){
+    ringGrow11 += random(3.4, 8.4);
+
+  }
+   if (ringGrow11 > 31){
+    ringGrow12 += random(3.6, 8.6);
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+  }
+ 
+  if (ringGrow12 > displayWidth/2){
+    ringGrow9 = 0;
+    ringGrow10 = 0;
+    ringGrow11 = 0;
+    ringGrow12 = 0;
+  
+   // ringx = ringx += (random(-100,100));
+   // ringy = ringy += (random(-100,100));
+  }
+}
+void ringmove4(){
+  
+   ringGrow13 += random(3,8);
+ 
+   if (ringGrow13 > 25){
+
+  ringGrow14 += random(3.2, 8.2);
+  }
+  if (ringGrow14 > 28){
+    ringGrow15 += random(3.4, 8.4);
+
+  }
+   if (ringGrow15 > 31){
+    ringGrow16 += random(3.6, 8.6);
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+  }
+ 
+  if (ringGrow16 > displayWidth/3){
+    ringGrow13 = 0;
+    ringGrow14 = 0;
+    ringGrow15 = 0;
+    ringGrow16 = 0;
+  
+   // ringx = ringx += (random(-100,100));
+   // ringy = ringy += (random(-100,100));
+  }
+}
+void ringmove5(){
+  
+   ringGrow17 += random(3,8);
+ 
+   if (ringGrow17 > 25){
+
+  ringGrow18 += random(3.2, 8.2);
+  }
+  if (ringGrow18 > 28){
+    ringGrow19 += random(3.4, 8.4);
+
+  }
+   if (ringGrow19 > 31){
+    ringGrow20 += random(3.6, 8.6);
+    //ringy =random(0,800);
+    //ringx =random(0,600);
+
+  }
+ 
+  if (ringGrow20 > displayWidth/3){
+    ringGrow17 = 0;
+    ringGrow18 = 0;
+    ringGrow19 = 0;
+    ringGrow20 = 0;
+  
+   // ringx = ringx += (random(-100,100));
+   // ringy = ringy += (random(-100,100));
+  }
+}
+}
